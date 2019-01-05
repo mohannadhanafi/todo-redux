@@ -1,0 +1,9 @@
+.App {
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 50px;
+}
+
+.App hr {
+  border: 1px solid #B1BDD1;
+}
