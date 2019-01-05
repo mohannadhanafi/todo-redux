@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon ./src/server/index.js",
-    "start:both": "NODE_ENV=development concurrently \"npm start\" \"cd src/client && npm start \""
+    "start:both": "NODE_ENV=development concurrently \"npm start\" \"cd src/client && npm start \"",
+    "heroku-postbuild": "cd src/client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
