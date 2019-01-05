@@ -2,7 +2,6 @@ require('env2')('./config.env');
 
 
 const dbConfig = (env) => {
-  console.log(env);
   if (env === 'development') {
     return {
       username: process.env.DB_USERNAME,
