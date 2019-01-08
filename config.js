@@ -1,6 +1,5 @@
 require('env2')('./config.env');
 
-
 const dbConfig = (env) => {
   if (env === 'development') {
     return {
