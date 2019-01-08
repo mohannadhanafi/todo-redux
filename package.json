@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./src/server/index.js",
+    "start": "NODE_ENV=development nodemon ./src/server/index.js",
     "start:both": "NODE_ENV=development concurrently \"npm start\" \"cd src/client && npm start \"",
     "heroku-postbuild": "cd src/client && npm install && npm run build"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "env2": "^2.2.2",
     "express": "^4.16.4",
+    "nodemon": "^1.18.9",
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.42.0"
