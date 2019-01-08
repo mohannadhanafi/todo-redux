@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/todos', getTodo);
 router.post('/todos', addTodo);
-router.post('/updatetodos', update);
+router.put('/todos', update);
 
 module.exports = router;
