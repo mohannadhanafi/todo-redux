@@ -18,7 +18,13 @@ exports.addTodo = async (req, res) => {
   res.send({ message: 'Adding to do done' });
 };
 
-exports.update = async (req, res) => {
+exports.update = (req, res) => {
   const { todoId } = req.body;
   todo.update({ checked: Sequelize.literal('NOT checked') }, { where: { id: todoId } });
+};
+
+exports.deleteTodo = async (req, res) => {
+  const { todoId } = req.body;
+  await todo.destroy({ where: { id: todoId } });
+  res.send({ message: 'Deleted' });
 };

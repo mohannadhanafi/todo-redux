@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Todo from '../Todo';
-import { getTodo, checkTodo } from '../../redux/actions/todos';
+import { getTodo, checkTodo, deleteTodo } from '../../redux/actions/todos';
 
 class index extends Component {
     componentDidMount = async () => {
@@ -12,12 +12,8 @@ class index extends Component {
       getTodo();
     }
 
-    Delete = () => {
-      console.log('deleted');
-    }
-
     render() {
-      const { todos, checkTodo } = this.props;
+      const { todos, checkTodo, deleteTodo } = this.props;
       return (
         <Fragment>
           { (todos.length > 0) ? (todos.map(todo => (
@@ -26,7 +22,7 @@ class index extends Component {
               date={todo.id}
               description={todo.description}
               Check={() => checkTodo(todo.id)}
-              Delete={this.Delete}
+              Delete={() => deleteTodo(todo.id)}
               checked={todo.checked}
             />
           ))) : (<div>There is no TODO yet</div>) }
@@ -43,4 +39,4 @@ const mapStateToProps = state => ({
   todos: state.todos.todos,
 });
 
-export default connect(mapStateToProps, { getTodo, checkTodo })(index);
+export default connect(mapStateToProps, { getTodo, checkTodo, deleteTodo })(index);
