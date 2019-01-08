@@ -1,4 +1,4 @@
-import { GET_TODOS, CHECK_TODO } from '../actions/types';
+import { GET_TODOS, CHECK_TODO, DELETE_TODO } from '../actions/types';
 
 const initialState = {
   todos: [],
@@ -22,6 +22,9 @@ export default function (state = initialState, action) {
           return temp;
         } return todo;
       });
+      return { ...state, todos: finalArray };
+    case DELETE_TODO:
+      finalArray = todos.filter(todo => todo.id !== payload);
       return { ...state, todos: finalArray };
     default:
       return state;
