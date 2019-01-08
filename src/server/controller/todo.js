@@ -12,19 +12,17 @@ exports.getTodo = async (req, res) => {
   }
 };
 
-exports.addTodo = async (req, res) => {
-  const { todoData } = req.body;
-  await todo.create(todoData);
-  res.send({ message: 'Adding to do done' });
-};
-
 exports.update = (req, res) => {
   const { todoId } = req.body;
   todo.update({ checked: Sequelize.literal('NOT checked') }, { where: { id: todoId } });
 };
 
-exports.deleteTodo = async (req, res) => {
+exports.deleteTodo = (req, res) => {
   const { todoId } = req.body;
-  await todo.destroy({ where: { id: todoId } });
-  res.send({ message: 'Deleted' });
+  todo.destroy({ where: { id: todoId } });
+};
+
+exports.addTodo = (req, res) => {
+  const { description } = req.body;
+  todo.create({ description });
 };

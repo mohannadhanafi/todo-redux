@@ -25,3 +25,8 @@ export const deleteTodo = id => (dispatch) => {
     payload: id,
   });
 };
+
+export const addTodo = description => (dispatch) => {
+  console.log('Hello from action');
+  axios.delete('/api/v2/todos', { data: { description } });
+};
