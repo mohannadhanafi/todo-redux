@@ -9,10 +9,10 @@ export const getTodo = () => async (dispatch) => {
   dispatch({ type: GET_TODOS, payload: finalData });
 };
 
-export const checkTodo = id => async (dispatch) => {
+export const checkTodo = id => (dispatch) => {
   axios({
-    url: '/api/v2/updatetodos',
-    method: 'POST',
+    url: '/api/v2/todos',
+    method: 'PUT',
     data: { todoId: id },
   });
   dispatch({
