@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon ./src/server/index.js",
+    "start": "NODE_ENV=development node ./src/server/index.js",
     "start:both": "NODE_ENV=development concurrently \"npm start\" \"cd src/client && npm start \"",
     "heroku-postbuild": "cd src/client && npm install && npm run build"
   },
@@ -22,7 +22,6 @@
     "concurrently": "^4.1.0",
     "eslint": "^5.11.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "nodemon": "^1.18.9"
+    "eslint-plugin-import": "^2.14.0"
   }
 }
