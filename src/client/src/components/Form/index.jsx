@@ -1,11 +1,15 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addTodo } from '../../redux/actions/todos';
 import {
   Title, SpecialLabel, SpecialInput, Icon, ButtonIcon,
 } from './style';
 
-export default class index extends Component {
+class index extends Component {
     state = {
       todo: '',
     }
@@ -21,10 +25,16 @@ export default class index extends Component {
           <Title>Create New</Title>
           <SpecialLabel htmlFor="todo">Task</SpecialLabel>
           <SpecialInput name="todo" value={todo} placeholder="Enter Task" onChange={this.onChange} />
-          <ButtonIcon type="button" onClick={() => console.log('Add new task')}>
+          <ButtonIcon type="button" onClick={() => this.props.addTodo(todo)}>
             <Icon className="fas fa-plus-circle fa-2x" />
           </ButtonIcon>
         </div>
       );
     }
 }
+
+index.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addTodo })(index);

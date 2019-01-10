@@ -1,7 +1,9 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { GET_TODOS, CHECK_TODO, DELETE_TODO } from './types';
+import {
+  GET_TODOS, CHECK_TODO, DELETE_TODO, ADD_TODO,
+} from './types';
 
 export const getTodo = () => async (dispatch) => {
   const res = await axios('/api/v2/todos');
@@ -27,6 +29,9 @@ export const deleteTodo = id => (dispatch) => {
 };
 
 export const addTodo = description => (dispatch) => {
-  console.log('Hello from action');
-  axios.delete('/api/v2/todos', { data: { description } });
+  axios.post('/api/v2/todos', { description });
+  dispatch({
+    type: ADD_TODO,
+    payload: description,
+  });
 };

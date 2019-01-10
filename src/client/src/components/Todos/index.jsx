@@ -1,5 +1,5 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -32,7 +32,10 @@ class index extends Component {
 }
 
 index.propTypes = {
+  todos: PropTypes.array.isRequired,
   getTodo: PropTypes.func.isRequired,
+  checkTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

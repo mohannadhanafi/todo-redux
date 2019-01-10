@@ -15,14 +15,17 @@ exports.getTodo = async (req, res) => {
 exports.update = (req, res) => {
   const { todoId } = req.body;
   todo.update({ checked: Sequelize.literal('NOT checked') }, { where: { id: todoId } });
+  res.send('done');
 };
 
 exports.deleteTodo = (req, res) => {
   const { todoId } = req.body;
   todo.destroy({ where: { id: todoId } });
+  res.send('done');
 };
 
 exports.addTodo = (req, res) => {
   const { description } = req.body;
   todo.create({ description });
+  res.send('done');
 };
